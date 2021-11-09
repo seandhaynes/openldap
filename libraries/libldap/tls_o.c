@@ -178,12 +178,6 @@ tlso_ca_list( char * bundle, char * dir, X509 *cert )
 			ca_list = sk_X509_NAME_new_null();
 			freeit = 1;
 		}
-		if ( !SSL_add_dir_cert_subjects_to_stack( ca_list, dir ) &&
-			freeit ) {
-			sk_X509_NAME_free( ca_list );
-			ca_list = NULL;
-		}
-	}
 #endif
 	if ( cert ) {
 		X509_NAME *xn = X509_get_subject_name( cert );
